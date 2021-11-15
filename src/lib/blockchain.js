@@ -4,7 +4,7 @@ import { SHA256 } from "crypto-js";
 export class Blockchain {
   constructor() {
     this.chain = [this.initGenesisBlock()];
-    this.difficulty = 5;
+    this.difficulty = 4;
   }
 
   initGenesisBlock() {
@@ -34,7 +34,7 @@ export class Blockchain {
 
   updateChain(block) {
     // update hash for each block starting at this block and looping through the rest of the chain + validate new hashes
-    for (let i = block.index; i < this.chain.length; i++) {
+    for (let i = block.index + 1; i < this.chain.length; i++) {
       this.chain[i].hash = this.calculateHash(
         this.chain[i],
         this.chain[i].nonce
@@ -48,7 +48,7 @@ export class Blockchain {
   }
 
   mineBlock(block, isChain) {
-    if (block.validateHash(block, block.nonce)) {
+    if (this.validateHash(block, block.nonce)) {
       let testNonce = 0;
       while (
         this.calculateHash(block, testNonce).substring(0, this.difficulty) !==
@@ -58,11 +58,10 @@ export class Blockchain {
       }
       this.chain[block.index].nonce = testNonce;
       this.chain[block.index].hash = this.calculateHash(block, testNonce);
+      this.chain[block.index].error = this.validateHash(block);
 
       if (isChain) {
         this.updateChain(block);
-      } else {
-        block.error = this.validateHash(block);
       }
     }
   }
@@ -83,6 +82,7 @@ export class Blockchain {
 
   updateBlockData(blockIndex, data) {
     this.chain[blockIndex].data = data;
+    this.chain[blockIndex].error = this.validateHash(this.chain[blockIndex]);
     this.updateChain(this.chain[blockIndex]);
   }
 

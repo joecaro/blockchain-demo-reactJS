@@ -1,4 +1,5 @@
 import React from "react";
+import BlockchainComponent from "../components/Blockchain";
 
 export default function Blockchain() {
   return (
@@ -24,6 +25,8 @@ export default function Blockchain() {
       </p>
       <h2>Current Blockchains</h2>
       <p></p>
+      <hr />
+      <BlockchainComponent />
     </>
   );
 }
