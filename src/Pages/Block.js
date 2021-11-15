@@ -9,9 +9,8 @@ export default function Block() {
       <p>
         A Block is the smallest unit of a Blockchain. Each block stores
         information about the block like the <strong> timestamp</strong>, a
-        reference to the
-        <strong>previous block</strong>, and importantly, <strong>data</strong>{" "}
-        to be saved with the block among other things.
+        reference to the <strong>previous block</strong>, and importantly,{" "}
+        <strong>data</strong> to be saved with the block among other things.
       </p>
       <img height='500px' src='/block.png' alt='block' />
       <p>
