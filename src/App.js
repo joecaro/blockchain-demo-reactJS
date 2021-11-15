@@ -26,7 +26,7 @@ function App() {
         <ul>
           <li>
             <NavLink
-              exact
+              exact='true'
               to='/'
               style={({ isActive }) => (isActive ? activeStyle : {})}>
               Home
@@ -34,7 +34,7 @@ function App() {
           </li>
           <li>
             <NavLink
-              exact
+              exact='true'
               to='/hash'
               style={({ isActive }) => (isActive ? activeStyle : {})}>
               Hash
@@ -42,7 +42,7 @@ function App() {
           </li>
           <li>
             <NavLink
-              exact
+              exact='true'
               to='/block'
               style={({ isActive }) => (isActive ? activeStyle : {})}>
               Block
@@ -50,7 +50,7 @@ function App() {
           </li>
           <li>
             <NavLink
-              exact
+              exact='true'
               to='/blockchain'
               style={({ isActive }) => (isActive ? activeStyle : {})}>
               Blockchain
@@ -58,7 +58,7 @@ function App() {
           </li>
           <li>
             <NavLink
-              exact
+              exact='true'
               to='/distributed'
               style={({ isActive }) => (isActive ? activeStyle : {})}>
               Distributed Blockchain
