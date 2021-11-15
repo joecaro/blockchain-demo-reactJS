@@ -42,13 +42,13 @@ export default function BlockPage() {
         First, we'll look at how we go about changing the hash result. You saw
         in the previous page that when we change the input of a hash function we
         will get a new and very different output. So we can change the input
-        data from a block to generate hashes until it fits the requirements.
-        However, when a block is ready to be mined, the block contains some
-        static information including the timestamp and data which is often some
-        transactions. We DO NOT want this data to be tampered with, so we add a
-        new number to the block that we continue to change until the resulting
-        hash fits our requirements. This number is called a{" "}
-        <strong>Nonce</strong>.
+        data from a block, which is fed into a hashing function to generate
+        hashes until it fits the requirements. However, when a block is ready to
+        be mined, the block contains some static information including the
+        timestamp and data which is often some transactions. We DO NOT want this
+        data to be tampered with, so we add a new number to the block that we
+        continue to change until the resulting hash fits our requirements. This
+        number is called a <strong>Nonce</strong>.
       </p>
       <p>
         Nonce stands for Number Used Once. This is used throughout Crypotgraphic
@@ -61,15 +61,13 @@ export default function BlockPage() {
         what mining is. We can change the requirments to change our difficulty.
         In our example, finding a hash starting with four zeros may only take a
         few seconds. We may want to increase the "Difficulty" by making the
-        requirements harder to find increasing the amount of hashes
+        requirements harder to find, increasing the amount of hashes
         (statistically) that must be generated to find this answer. Later on
-        you'll see that this "hard" problem gives us a way of validating blocks,
-        because as a chain grows, tampering with blocks requires more and more
-        work to generate the hashes since each block uses the previous blocks
-        unique has within its own hashing function. You'd have to regenerate
-        hashes for every block after yours which in some cases could takes
-        hours/days which can't keep up with the blocks being added to the valid
-        chain.
+        you'll see that this "hard" problem gives us a way of validating blocks
+        on the chain because as a chain grows, falsifying block data requires
+        increasing work to generate the hashes and propregate those changes down
+        the chain. In general the <strong>cost of tampering</strong> with the
+        chain outweighs the possible gain.
       </p>
       <p>
         However this is only one version of mining and it all coallesces into a
