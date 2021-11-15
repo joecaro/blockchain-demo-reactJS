@@ -3,6 +3,7 @@ import styled from "styled-components";
 import { Blockchain } from "../../lib/blockchain";
 
 export const SingleBlockCard = styled.div`
+  position: relative;
   padding: 20px;
   margin: auto;
   width: 100%;
@@ -33,7 +34,7 @@ const MineButton = styled.button`
   aspect-ratio: ${({ isLoading }) => (isLoading ? "1" : "4")};
   border-radius: ${({ isLoading }) => (isLoading ? "100%" : "3px")};
   border: 1px solid #333;
-  transition: 0.2s;
+  transition: 0.1s;
 `;
 
 export default function SingeBlock() {
@@ -62,7 +63,7 @@ export default function SingeBlock() {
       setChain(blockchain.chain);
       setNonce(blockchain.chain[0].nonce);
       setIsLoading(false);
-    }, 10);
+    }, 100);
   };
 
   useEffect(() => {

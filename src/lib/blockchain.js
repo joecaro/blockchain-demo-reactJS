@@ -48,20 +48,22 @@ export class Blockchain {
   }
 
   mineBlock(block, isChain) {
-    let testNonce = 0;
-    while (
-      this.calculateHash(block, testNonce).substring(0, this.difficulty) !==
-      Array(this.difficulty + 1).join("0")
-    ) {
-      testNonce++;
-    }
-    this.chain[block.index].nonce = testNonce;
-    this.chain[block.index].hash = this.calculateHash(block, testNonce);
+    if (block.validateHash(block, block.nonce)) {
+      let testNonce = 0;
+      while (
+        this.calculateHash(block, testNonce).substring(0, this.difficulty) !==
+        Array(this.difficulty + 1).join("0")
+      ) {
+        testNonce++;
+      }
+      this.chain[block.index].nonce = testNonce;
+      this.chain[block.index].hash = this.calculateHash(block, testNonce);
 
-    if (isChain) {
-      this.updateChain(block);
-    } else {
-      block.error = this.validateHash(block);
+      if (isChain) {
+        this.updateChain(block);
+      } else {
+        block.error = this.validateHash(block);
+      }
     }
   }
 
