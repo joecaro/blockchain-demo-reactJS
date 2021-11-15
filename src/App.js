@@ -5,6 +5,7 @@ import {
   NavLink,
 } from "react-router-dom";
 import Header from "./components/Header";
+import Main from "./components/Main";
 import Nav from "./components/Nav";
 import Block from "./Pages/Block";
 import Blockchain from "./Pages/Blockchain";
@@ -66,13 +67,15 @@ function App() {
         </ul>
       </Nav>
 
-      <Routes>
-        <Route exact path='/' element={<Home />}></Route>
-        <Route path='/hash' element={<Hash />}></Route>
-        <Route exact path='/block' element={<Block />}></Route>
-        <Route path='/blockchain' element={<Blockchain />}></Route>
-        <Route path='/distributed' element={<DistributedChain />}></Route>
-      </Routes>
+      <Main>
+        <Routes>
+          <Route exact path='/' element={<Home />}></Route>
+          <Route path='/hash' element={<Hash />}></Route>
+          <Route exact path='/block' element={<Block />}></Route>
+          <Route path='/blockchain' element={<Blockchain />}></Route>
+          <Route path='/distributed' element={<DistributedChain />}></Route>
+        </Routes>
+      </Main>
     </Router>
   );
 }
