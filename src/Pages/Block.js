@@ -1,7 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import Block from "../components/Block/";
 
-export default function Block() {
+export default function BlockPage() {
   return (
     <>
       <h1>Block</h1>
@@ -77,6 +78,7 @@ export default function Block() {
       </p>
 
       <hr />
+      <Block type='single' />
     </>
   );
 }
