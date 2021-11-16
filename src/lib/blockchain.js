@@ -82,6 +82,10 @@ export class Blockchain {
 
   updateBlockData(blockIndex, data) {
     this.chain[blockIndex].data = data;
+    this.chain[blockIndex].hash = this.calculateHash(
+      this.chain[blockIndex],
+      this.chain[blockIndex].nonce
+    );
     this.chain[blockIndex].error = this.validateHash(this.chain[blockIndex]);
     this.updateChain(this.chain[blockIndex]);
   }

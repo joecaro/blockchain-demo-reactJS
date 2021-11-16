@@ -1,6 +1,7 @@
 import React from "react";
 import BlockchainBlock from "./BlockchainBlock";
 import SingeBlock from "./SingeBlock";
+import Hash from "./Hash";
 
 export default function index({ type, blockchain, chain, setChain, block }) {
   return (
@@ -14,6 +15,7 @@ export default function index({ type, blockchain, chain, setChain, block }) {
           block={block}
         />
       )}
+      {type === "hash" && <Hash />}
     </>
   );
 }

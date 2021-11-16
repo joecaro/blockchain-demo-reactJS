@@ -68,9 +68,7 @@ export default function BlockchainBlock({
       setIsLoading(false);
     }, 100);
   };
-  useEffect(() => {
-    console.log(blockchain.chain[block.index]);
-  });
+
   return (
     <SingleBlockCard valid={!blockchain.chain[block.index].error}>
       <form>

@@ -1,4 +1,5 @@
 import React from "react";
+import Block from "../components/Block";
 
 export default function Hash() {
   return (
@@ -54,6 +55,7 @@ export default function Hash() {
         </li>
       </ul>
       <hr />
+      <Block type='hash' />
     </>
   );
 }

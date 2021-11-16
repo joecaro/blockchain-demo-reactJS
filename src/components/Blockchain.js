@@ -28,5 +28,6 @@ export default function BlockchainComponent() {
 
 const BlockchainContainer = styled.div`
   display: flex;
+  gap: 20px;
   overflow-x: scroll;
 `;

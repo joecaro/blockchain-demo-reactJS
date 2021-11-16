@@ -15,7 +15,12 @@ export default function AddBlock({ addNewBlock }) {
   return (
     <Form>
       <fieldset>
-        <input type='textarea' value={value} onChange={handleChange}></input>
+        <input
+          type='textarea'
+          rows='10'
+          cols='40'
+          value={value}
+          onChange={handleChange}></input>
       </fieldset>
       <button onClick={handleAddBlock}>Add Block</button>
     </Form>
