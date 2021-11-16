@@ -49,7 +49,6 @@ export default function BlockchainBlock({
   const handleNonceChange = (event) => {
     setNonce(event.target.value);
     blockchain.updateBlockNonce(block.index, event.target.value);
-    console.log(blockchain[block.index]);
     setChain(blockchain.chain);
   };
   const handleDataChange = (event) => {
@@ -70,7 +69,7 @@ export default function BlockchainBlock({
   };
 
   return (
-    <SingleBlockCard valid={!blockchain.chain[block.index].error}>
+    <SingleBlockCard valid={!block.error}>
       <form>
         <fieldset>
           <label htmlFor='block'>Block: </label>
@@ -78,7 +77,7 @@ export default function BlockchainBlock({
             type='number'
             name='block'
             id='block'
-            value={chain[0].index}
+            value={block.index}
             disabled={true}
           />
           <label htmlFor='nonce'>Nonce: </label>
@@ -100,7 +99,7 @@ export default function BlockchainBlock({
             onChange={handleDataChange}
           />
           <p>
-            Hash: <span>{chain[0].hash}</span>
+            Hash: <span>{block.hash}</span>
           </p>
         </fieldset>
         <MineButton isLoading={isLoading} onClick={handleMine}>

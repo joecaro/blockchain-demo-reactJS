@@ -1,26 +1,32 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 
-export default function AddBlock({ addNewBlock }) {
+export default function AddBlock({ addBlock }) {
   const [value, setValue] = useState("");
 
-  const handleChange = (e) => {
+  const handleDataChange = (e) => {
     setValue(e.target.value);
   };
+
   const handleAddBlock = (e) => {
     e.preventDefault();
-    setValue("");
-    // add block
+    addBlock(value);
   };
+
   return (
     <Form>
       <fieldset>
-        <input
+        <label htmlFor='data'>Data </label>
+        <textarea
           type='textarea'
-          rows='10'
-          cols='40'
+          name='data'
+          id='data'
+          rows='5'
+          cols='15'
+          placeholder='data...'
           value={value}
-          onChange={handleChange}></input>
+          onChange={handleDataChange}
+        />
       </fieldset>
       <button onClick={handleAddBlock}>Add Block</button>
     </Form>
@@ -38,6 +44,7 @@ const Form = styled.form`
   background-color: #efefef;
   display: flex;
   flex-direction: column;
+  align-items: center;
   fieldset {
     display: flex;
     flex-direction: column;
@@ -50,5 +57,8 @@ const Form = styled.form`
   textarea {
     border-radius: 3px;
     border: 1px solid #333;
+  }
+  button {
+    width: 50%;
   }
 `;
