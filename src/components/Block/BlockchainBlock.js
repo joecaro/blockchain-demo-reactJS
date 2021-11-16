@@ -37,9 +37,10 @@ const MineButton = styled.button`
 `;
 
 export default function BlockchainBlock({
-  blockchain,
-  chain,
+  nonceChange,
+  dataChange,
   setChain,
+  blockchain,
   block,
 }) {
   const [nonce, setNonce] = useState(block.nonce);
@@ -48,23 +49,24 @@ export default function BlockchainBlock({
 
   const handleNonceChange = (event) => {
     setNonce(event.target.value);
-    blockchain.updateBlockNonce(block.index, event.target.value);
-    setChain(blockchain.chain);
+    nonceChange(block, data);
   };
   const handleDataChange = (event) => {
     setData(event.target.value);
-    blockchain.updateBlockData(block.index, event.target.value);
-    setChain(blockchain.chain);
+    dataChange(block, data);
   };
 
   const handleMine = (e) => {
     e.preventDefault();
     setIsLoading(true);
     setTimeout(() => {
-      blockchain.mineBlock(blockchain.chain[block.index], true);
-      setChain(blockchain.chain);
+      let newChain = [
+        ...blockchain.mineBlock(blockchain.chain[block.index], true),
+      ];
+      console.log(newChain);
       setNonce(blockchain.chain[block.index].nonce);
       setIsLoading(false);
+      setChain(newChain);
     }, 100);
   };
 

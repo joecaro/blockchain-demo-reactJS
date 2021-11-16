@@ -13,9 +13,15 @@ export default function BlockchainComponent() {
     setChain(newChain);
   };
 
-  useEffect(() => {
-    console.log(chain);
-  }, [chain]);
+  const handleDataChange = (block, data) => {
+    let newChain = [...blockchain.updateBlockData(block.index, data)];
+    setChain(newChain);
+  };
+
+  const handleNonceChange = (block, data) => {
+    let newChain = [...blockchain.updateBlockNonce(block.index, data)];
+    setChain(newChain);
+  };
 
   return (
     <BlockchainContainer>
@@ -23,9 +29,10 @@ export default function BlockchainComponent() {
         <Block
           key={block.index}
           type='blockchain'
-          blockchain={blockchain}
-          chain={chain}
+          nonceChange={handleNonceChange}
+          dataChange={handleDataChange}
           setChain={setChain}
+          blockchain={blockchain}
           block={block}
         />
       ))}

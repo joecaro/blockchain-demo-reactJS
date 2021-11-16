@@ -35,6 +35,7 @@ export class Blockchain {
   updateChain(block) {
     // update hash for each block starting at this block and looping through the rest of the chain + validate new hashes
     for (let i = block.index + 1; i < this.chain.length; i++) {
+      this.chain[i].prevHash = this.chain[i - 1].hash;
       this.chain[i].hash = this.calculateHash(
         this.chain[i],
         this.chain[i].nonce
@@ -63,6 +64,10 @@ export class Blockchain {
       if (isChain) {
         this.updateChain(block);
       }
+      return this.chain;
+    } else {
+      block.error = false;
+      return this.chain;
     }
   }
 
@@ -88,6 +93,8 @@ export class Blockchain {
     );
     this.chain[blockIndex].error = this.validateHash(this.chain[blockIndex]);
     this.updateChain(this.chain[blockIndex]);
+
+    return this.chain;
   }
 
   updateBlockNonce(blockIndex, nonce) {
@@ -97,5 +104,8 @@ export class Blockchain {
       nonce
     );
     this.chain[blockIndex].error = this.validateHash(this.chain[blockIndex]);
+    this.updateChain(this.chain[blockIndex]);
+
+    return this.chain;
   }
 }
