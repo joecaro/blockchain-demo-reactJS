@@ -28,7 +28,7 @@ export default function AddBlock({ addBlock }) {
           onChange={handleDataChange}
         />
       </fieldset>
-      <button onClick={handleAddBlock}>Add Block</button>
+      <button onClick={handleAddBlock}>Mine Block</button>
     </Form>
   );
 }
@@ -41,7 +41,7 @@ const Form = styled.form`
   height: 100%;
   border-radius: 10px;
   box-shadow: 10px 10px 10px #00000022;
-  background-color: #efefef;
+  background-color: #fafafa;
   display: flex;
   flex-direction: column;
   align-items: center;

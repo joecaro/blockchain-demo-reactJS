@@ -5,7 +5,7 @@ export const SingleBlockCard = styled.div`
   position: relative;
   padding: 20px;
   margin: auto;
-  width: 600px;
+  width: 620px;
   border-radius: 10px;
   box-shadow: 10px 10px 10px #00000022;
   background-color: ${({ valid }) => (valid ? "#dfffda" : "#ffdada")};
