@@ -5,9 +5,7 @@ export const SingleBlockCard = styled.div`
   position: relative;
   padding: 20px;
   margin: auto;
-  width: 100%;
-  min-width: 600px;
-  max-width: 800px;
+  width: 600px;
   border-radius: 10px;
   box-shadow: 10px 10px 10px #00000022;
   background-color: ${({ valid }) => (valid ? "#dfffda" : "#ffdada")};
@@ -23,6 +21,12 @@ export const SingleBlockCard = styled.div`
   textarea {
     border-radius: 3px;
     border: 1px solid #333;
+  }
+  span {
+    background-color: #eee;
+    padding: 1px 3px;
+    border-radius: 3px;
+    border: 1px solid black;
   }
 `;
 
@@ -100,6 +104,9 @@ export default function BlockchainBlock({
             value={data}
             onChange={handleDataChange}
           />
+          <p>
+            Prev Hash: <span>{block.prevHash}</span>
+          </p>
           <p>
             Hash: <span>{block.hash}</span>
           </p>
