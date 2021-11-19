@@ -57,7 +57,31 @@ export default function Blockchain() {
         style={{ width: "500px", height: "300px" }}
         src='/miners.png'
         alt='Mining Diagram'></img>
-      <h2>How Blockchains Avoid Tampering</h2>
+      <h2>How Blockchains Avoid Tampering and Maintain Integrity</h2>
+      <p>
+        There are two mechanisms through which a blockchain can maintain
+        integrity. These are consensus and immutability. Consensus is the
+        ability of the nodes within the blockchain network to agree on the state
+        of the network and on the validity of transactions. Usually, the process
+        of achieving consensus is accomplished through a consensus algorithm.
+        Previously we've talked about proof of work as a consensus mechanism.
+        Immutability is the ability of a blockchain to prevent alteration of
+        transactions that have already been confirmed. There are multiple
+        aspects that lead to the immutability of a blockchain. The aspect of
+        immutability we will focus on is the use of hash signatures.
+      </p>
+      <p>
+        As discussed before, when a block is mined a hash is created with the
+        data contained in the block as the input. The nonce is changed untilt he
+        resulting hash fits some requirements. To check the validity of the
+        block you can recalculate the hash given the data within the block to
+        see if the resulting hash is still valid. You can see how this works
+        below.
+        <br />
+        Additionally, each block contains the hash of its previous block which
+        is included in its hash calculation. So whenever a block is mutated, the
+        hash of the next block in the chain will change and become invalid.
+      </p>
       <hr />
       <BlockchainComponent />
     </>
