@@ -1,3 +1,7 @@
+# Blockchain Demo
+
+This application uses ideas from Anders Brownworth https://github.com/anders94/blockchain-demo to create a standalone instructional application on the basic ideas of blockchain technologies.
+
 ## Available Scripts
 
 In the project directory, you can run:
