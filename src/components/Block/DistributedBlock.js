@@ -27,6 +27,7 @@ export const SingleBlockCard = styled.div`
     padding: 1px 3px;
     border-radius: 3px;
     border: 1px solid black;
+    font-size: 0.75rem;
   }
 `;
 
