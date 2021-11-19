@@ -11,12 +11,14 @@ export class Blockchain {
     let prevHash =
       "0000000000000000000000000000000000000000000000000000000000000000";
     let data = "Initial Block in the Chain";
-    return new Block(
+    let firstBlock = new Block(
       prevHash,
       0,
       data,
       "0000f727854b50bb95c054b39c1fe5c92e5ebcfa4bcb5dc279f56aa96a365e5a"
     );
+    firstBlock.nonce = 12424;
+    return firstBlock;
   }
 
   calculateHash(block, testNonce) {
