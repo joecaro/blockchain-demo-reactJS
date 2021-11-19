@@ -86,6 +86,42 @@ export default function Blockchain() {
           the hash of the next block in the chain will change and become
           invalid.
         </p>
+        <p>
+          Below you will see a simulated & isolated blockchain. Feel free to add
+          data and mine new blocks. There are effectively <strong>three</strong>{" "}
+          ways we can work to maintain the blockchain with the inherent
+          properties of the blockchain.
+          <p>
+            <strong>Check the validity of the Hash</strong>
+            <br />
+            We can always rehash the block using its contents to check its
+            signature. If the block has been tampered with, the hash would not
+            match up. If you wanted to successfully tamper with a block, you
+            would need to recalculate the hash after changing its content.
+          </p>
+          <p>
+            <strong>Check the validity of the Chain</strong>
+            <br />
+            If you've changed data in one block and recalculated its hash, that
+            wouldn't be able to fool anyone though. As discussed previously,
+            each block calculates its own hash with the hash of the previous
+            block. This means if you've changed the hash of some block in the
+            chain, each subsequent block will recalcuate its hash, becoming
+            invalid.
+          </p>
+          <br />
+          <p>
+            <strong>Rebuilding the chain would be hard</strong>
+            <br />
+            So to successfully recreate the chain with valid blocks you would
+            need to perform the significantly computational power intensive
+            mining operation on each block from the one you affect. You could
+            eventually do this for an isolated blockchain, and successfully
+            create your own local copy with tampered data. This idea falls apart
+            when you need to check this data against a distributed network,
+            which we will look at on the next page.
+          </p>
+        </p>
       </Main>
       <hr />
       <BlockchainComponent />
