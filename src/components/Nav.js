@@ -8,6 +8,7 @@ export default function Nav({ children }) {
 const NavContainer = styled.nav`
   width: 100vw;
   display: flex;
+  justify-content: center;
   border-bottom: 1px solid #111;
   ul {
     list-style: none;
@@ -17,6 +18,7 @@ const NavContainer = styled.nav`
     grid-template-columns: repeat(5, 1fr);
     align-items: center;
     width: 100vw;
+    max-width: 1100px;
     height: 40px;
   }
   a {
