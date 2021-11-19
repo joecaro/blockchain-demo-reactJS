@@ -1,5 +1,10 @@
 import React from "react";
+import DistributedBlockchain from "../components/DistributedBlockchain";
 
 export default function DistributedChain() {
-  return <div>Distributed Chain Page</div>;
+  return (
+    <div>
+      <DistributedBlockchain />
+    </div>
+  );
 }

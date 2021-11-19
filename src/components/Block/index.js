@@ -11,6 +11,7 @@ export default function index({
   chain,
   setChain,
   block,
+  chainNum,
 }) {
   return (
     <>
@@ -23,6 +24,17 @@ export default function index({
           chain={chain}
           setChain={setChain}
           block={block}
+        />
+      )}
+      {type === "distributed" && (
+        <BlockchainBlock
+          nonceChange={nonceChange}
+          dataChange={dataChange}
+          blockchain={blockchain}
+          chain={chain}
+          setChain={setChain}
+          block={block}
+          chainNum={chainNum}
         />
       )}
       {type === "hash" && <Hash />}
