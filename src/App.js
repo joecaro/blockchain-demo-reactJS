@@ -13,7 +13,7 @@ import DistributedChain from "./Pages/DistributedChain";
 import Hash from "./Pages/Hash";
 import Home from "./Pages/Home";
 
-const activeStyle = {
+export const activeStyle = {
   color: "#2955f3",
   filter: "drop-shadow(0 0 2px #0a3cef22)",
 };
