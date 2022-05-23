@@ -18,6 +18,7 @@ export default function index({
       {type === "single" && <SingeBlock />}
       {type === "blockchain" && (
         <BlockchainBlock
+          genesisBlock={block.index === 0}
           nonceChange={nonceChange}
           dataChange={dataChange}
           blockchain={blockchain}
@@ -28,6 +29,7 @@ export default function index({
       )}
       {type === "distributed" && (
         <BlockchainBlock
+          genesisBlock={block.index === 0}
           nonceChange={nonceChange}
           dataChange={dataChange}
           blockchain={blockchain}

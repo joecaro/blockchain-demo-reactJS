@@ -1,8 +1,7 @@
-import React from "react";
 import BlockchainComponent from "../components/Blockchain";
 import { Main } from "../components/styles/Main";
 
-export default function Blockchain() {
+export default function BlockchainPage() {
   return (
     <>
       <Main>
@@ -124,6 +123,7 @@ export default function Blockchain() {
         </p>
       </Main>
       <hr />
+
       <BlockchainComponent />
     </>
   );

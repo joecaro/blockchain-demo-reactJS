@@ -4,15 +4,26 @@ import styled from "styled-components";
 export const SingleBlockCard = styled.div`
   position: relative;
   padding: 20px;
-  margin: auto;
-  width: 620px;
   border-radius: 10px;
   box-shadow: 10px 10px 10px #00000022;
   background-color: ${({ valid }) => (valid ? "#dfffda" : "#ffdada")};
-  fieldset {
+
+  form {
+    height: 100%;
     display: flex;
     flex-direction: column;
+  }
+
+  fieldset {
     border: none;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    padding: 0;
+  }
+  label {
+    display: flex;
+    flex-direction: column;
   }
   input {
     border-radius: 3px;
@@ -28,6 +39,19 @@ export const SingleBlockCard = styled.div`
     border-radius: 3px;
     border: 1px solid black;
   }
+
+  .transactions {
+    background-color: #ffffffaa;
+    border: 1px solid black;
+    border-radius: 0.25rem;
+    height: 100%;
+    padding: 1rem;
+  }
+
+  .single-transaction {
+    display: flex;
+    gap: 1rem;
+  }
 `;
 
 const MineButton = styled.button`
@@ -41,6 +65,7 @@ const MineButton = styled.button`
 `;
 
 export default function BlockchainBlock({
+  genesisBlock,
   nonceChange,
   dataChange,
   setChain,
@@ -64,21 +89,33 @@ export default function BlockchainBlock({
     e.preventDefault();
     setIsLoading(true);
     setTimeout(() => {
-      let newChain = [
-        ...blockchain.mineBlock(blockchain.chain[block.index], true),
-      ];
-      console.log(newChain);
-      setNonce(blockchain.chain[block.index].nonce);
+      let newChain = [...blockchain.mineBlock(block, true)];
       setIsLoading(false);
       setChain(newChain);
-    }, 100);
+    }, 500);
+  };
+
+  const handleUpdateTransactionValue = (e) => {
+    //get index from custom attribute
+    let transactionIndex = parseInt(e.target.attributes.index.value);
+    let key = e.target.name;
+    let newChain = [
+      ...blockchain.updateBlockTransactions(
+        block.index,
+        transactionIndex,
+        key,
+        e.target.value
+      ),
+    ];
+
+    setChain(newChain);
   };
 
   return (
     <SingleBlockCard valid={!block.error}>
       <form>
         <fieldset>
-          <label htmlFor='block'>Block: </label>
+          <label htmlFor='block'>Block:</label>
           <input
             type='number'
             name='block'
@@ -86,7 +123,7 @@ export default function BlockchainBlock({
             value={block.index}
             disabled={true}
           />
-          <label htmlFor='nonce'>Nonce: </label>
+          <label htmlFor='nonce'>Nonce:</label>
           <input
             type='number'
             id='nonce'
@@ -94,16 +131,61 @@ export default function BlockchainBlock({
             value={nonce}
             onChange={handleNonceChange}
           />
-          <label htmlFor='data'>Data: </label>
-          <textarea
-            type='textarea'
-            name='data'
-            id='data'
-            rows='10'
-            cols='40'
-            value={data}
-            onChange={handleDataChange}
-          />
+          <label className='transactions-label' htmlFor='data'>
+            Data:
+          </label>
+          {genesisBlock && (
+            <textarea
+              type='textarea'
+              name='data'
+              id='data'
+              rows='10'
+              cols='40'
+              value={data}
+              onChange={handleDataChange}
+            />
+          )}
+          {!genesisBlock && (
+            <div className='transactions'>
+              <>
+                {block.transactions.length >= 1 &&
+                  block.transactions.map((transaction, index) => (
+                    <div
+                      key={`block: ${block.index} - transaction: ${index + 1}`}
+                      className='single-transaction'>
+                      <p>{index + 1}.</p>
+                      <label>
+                        From
+                        <input
+                          index={index}
+                          onChange={handleUpdateTransactionValue}
+                          name='from'
+                          value={transaction.from}
+                        />
+                      </label>
+                      <label>
+                        To{" "}
+                        <input
+                          index={index}
+                          name='to'
+                          value={transaction.to}
+                          onChange={handleUpdateTransactionValue}
+                        />
+                      </label>
+                      <label>
+                        Amount
+                        <input
+                          index={index}
+                          name='amount'
+                          value={transaction.amount}
+                          onChange={handleUpdateTransactionValue}
+                        />
+                      </label>
+                    </div>
+                  ))}
+              </>
+            </div>
+          )}
           <p>
             Prev Hash: <span>{block.prevHash}</span>
           </p>

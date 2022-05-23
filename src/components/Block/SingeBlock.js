@@ -92,6 +92,7 @@ export default function SingeBlock() {
             onChange={handleNonceChange}
           />
           <label htmlFor='data'>Data: </label>
+
           <textarea
             type='textarea'
             name='data'
@@ -101,6 +102,7 @@ export default function SingeBlock() {
             value={data}
             onChange={handleDataChange}
           />
+
           <p>
             Hash: <span>{chain[0].hash}</span>
           </p>
