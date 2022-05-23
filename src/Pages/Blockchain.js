@@ -121,6 +121,7 @@ export default function BlockchainPage() {
             which we will look at on the next page.
           </p>
         </p>
+        <h2>Simulate adding transactions to a blockchain</h2>
         <p>
           Below, you can queue up pending transactions similar to how
           blockchains will. Then similar to a node on the network, you will
