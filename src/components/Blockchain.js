@@ -208,7 +208,7 @@ function Output({ outputMessages, computeHash, isLoading }) {
 const OutputContainer = styled.div`
   max-width: 1400px;
 
-  margin: auto;
+  margin: 3rem auto;
   padding: 20px;
   border-radius: 10px;
   border: 1px solid #bbb;

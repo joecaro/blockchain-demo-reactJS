@@ -121,6 +121,14 @@ export default function BlockchainPage() {
             which we will look at on the next page.
           </p>
         </p>
+        <p>
+          Below, you can queue up pending transactions similar to how
+          blockchains will. Then similar to a node on the network, you will
+          begin mining the list of pending transactions by clicking mine in the
+          output section. The answer to the problem, or the nonce that generates
+          a valid hash will be shown before the block appears on the chain
+          below.
+        </p>
       </Main>
       <hr />
 
